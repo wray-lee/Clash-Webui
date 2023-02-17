@@ -1,0 +1,22 @@
+#https://sub.xeton.dev/sub?target=clash&insert=true&new_name=true&scv=true&udp=true&exclude=&include=&url=https%3A%2F%2Fpatriot.ninja%2F%2Findex.php%3Fm%3Dwray%26token%3DBQ2QE7lZBC45SNllU%252FU%252FAGCERl7%252Bx8%252FcivLLnPxhXDUhD41%252BLfevV%252FE1BxObSJNlk0%252FIf%252FSYqD8%253D%26clash%3Don%26type%3D0&emoji=true&list=false&sort=false&udp=false&tfo=false&scv=false&append_type=false&fdn=true&new_name=true&config=https://github.com/juewuy/ShellClash/raw/master/rules/ShellClash_Full_Block.ini
+mixed-port: 7890
+redir-port: 7892
+tproxy-port: 7893
+authentication: [""]
+allow-lan: true
+mode: Rule
+log-level: info
+ipv6: true
+external-controller: :9999
+external-ui: ui
+secret: <your key>
+tun: {enable: false}
+experimental: {ignore-resolve-fail: true, interface-name: en0}
+dns: {enable: true, ipv6: true, listen: 0.0.0.0:1053, use-hosts: true, enhanced-mode: redir-host, default-nameserver: [114.114.114.114, 223.5.5.5, 1.0.0.1,  127.0.0.1:53], nameserver: [223.5.5.5,223.6.6.6,211.140.197.58,211.137.32.178,114.114.114.114,1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4], fallback: [1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4], fallback-filter: {geoip: true}}
+sniffer: {enable: true, sniffing: [tls, http]}
+store-selected: true
+hosts:
+   'time.android.com': 203.107.6.88
+   'time.facebook.com': 203.107.6.88  
+   'localhost': 127.0.0.1
+   'shellclash.cf': 172.67.174.82
