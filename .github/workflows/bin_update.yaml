@@ -93,9 +93,11 @@ jobs:
         sed -i '/GeoIP_v*/'d version
         echo GeoIP_v=`date '+%Y%m%d'` >> version
         echo IP数据库及根证书文件更新完成！
-    - name:Merge to config
-      run:
+
+    - name: Merge to config
+      run: |
         cp ./bin/Country.mmdb ./config & cp ./bin/geosite.dat ./config
+
     - name: Commit and push
       run: |
         git config --global user.email "wray_lee@outlook.com" && git config --global user.name "Bot"
