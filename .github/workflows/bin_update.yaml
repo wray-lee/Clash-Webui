@@ -1,4 +1,3 @@
-
 name: bin_update
 
 on: 
@@ -17,7 +16,7 @@ on:
 
 jobs:
   update:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
     
@@ -82,7 +81,7 @@ jobs:
         
     - name: Update GeoIP
       run: |
-        cd \bin
+        cd && mkdir bin & cd bin
         source version
         curl -kfSL -O https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/Country.mmdb
         curl -kfSL -o cn_mini.mmdb https://raw.githubusercontent.com/Hackl0us/GeoIP2-CN/release/Country.mmdb
@@ -99,6 +98,8 @@ jobs:
         cp ./bin/Country.mmdb ./config & cp ./bin/geosite.dat ./config
 
     - name: Commit and push
+	  permissions:
+  	  	contents: write
       run: |
         git config --global user.email "wray_lee@outlook.com" && git config --global user.name "Bot"
         git add . && git commit -m "自动更新最新Dashboard、地址库、根证书" || exit 0
