@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'tag of Clash Meta, such as Prerelease-Alpha, Prerelease-Beta, v1.11.1'
+        description: 'tag of Clash Meta, such as Prerelease-Alpha, Prerelease-Beta, v1.14.3'
         required: true
         type: string
 env:
@@ -52,7 +52,7 @@ jobs:
         archs=(amd64-compatible amd64-cgo amd64 386 386-cgo arm32v7 arm64)
         new_name=(amd64-compatible amd64-cgo amd64 386 386-cgo armv7 armv8)
         for((i=0;i<7;i++));do
-          wget "${download_url}/${download_tag}/Clash.Meta-windows-${archs[i]}-${download_version}.gz" -O - | gunzip -c > ./tmp/clash-windows-${new_name[i]}
+          wget "${download_url}/${download_tag}/Clash.Meta-windows-${archs[i]}-${download_version}.zip" -O - | gunzip -c > ./tmp/clash-windows-${new_name[i]}
         done
         cp ./tmp/clash-windows-amd64 ./clash.exe
         
@@ -64,6 +64,6 @@ jobs:
         sed -i "s/meta_v=.*/meta_v=$(./bin/clash.meta/clash-linux-amd64 -v 2>/dev/null | head -n 1 | sed 's/ linux.*//;s/.* //')/" bin/version
     - name: Commit and push
       run: |
-        git config --global user.email "juewuy@gmail.com" && git config --global user.name "Bot"
+        git config --global user.email "wray-lee@outlook.com" && git config --global user.name "Bot"
         git add . && git commit -m "更新Meta内核至${download_version}" || exit 0
         git push
