@@ -11,6 +11,10 @@ body:
 Please verify that you've followed these steps
 "
       options:
+        - label: "
+确保你使用的是**本仓库**最新的版本
+Ensure you are using the latest version from **this repository**.
+"
           required: true
         - label: "
 如果你可以自己 debug 并解决的话，提交 PR 吧
